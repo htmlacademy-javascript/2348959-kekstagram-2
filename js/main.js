@@ -54,10 +54,9 @@ const getGeneratedFromToUniq = (min, max) => {
 
 // обёртка для случайного числа из диапазона (с повторениями)
 const getGeneratedFromTo = (min, max) => {
-  return function () {
-    return getRandomInteger(min, max);
-  };
+  return () => getRandomInteger(min, max);
 };
+
 
 // случайные объекты из массива (с повторениями)
 const getElementArray = (anyArray) => {
