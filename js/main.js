@@ -98,3 +98,5 @@ const getPhotos = () => Array.from ({length: PHOTOS_NUMBER}, (_, i) => ({
   likes: randomLikes(),
   comments: createCommentsArray()
 }));
+
+getPhotos();
