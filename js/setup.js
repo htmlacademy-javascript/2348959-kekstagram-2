@@ -14,7 +14,7 @@ import {
   PHOTOS_NUMBER,
   MIN_PHOTO_ID, MAX_PHOTO_ID,
   MIN_AVATAR_ID, MAX_AVATAR_ID,
-  DESCRIPTIONS, NAMES, COMMENTS 
+  DESCRIPTIONS, NAMES, COMMENTS
 } from './data.js';
 
 // создание генераторов (единожды при загрузке модуля)
