@@ -24,7 +24,7 @@ export const getGeneratedFromToUniq = (min, max) => {
 
 // обёртка для случайного числа из диапазона (с повторениями)
 export const getGeneratedFromTo = (min, max) => () => getRandomInteger(min, max);
-  
+
 // случайные объекты из массива (с повторениями)
 export const getElementArray = (anyArray) => {
   const arrayObjects = anyArray;
