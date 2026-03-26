@@ -1,6 +1,7 @@
+import { getPhotos } from './setup.js';
 import { renderPhotos } from './render-photos.js';
 import { PHOTOS_NUMBER } from './data.js';
-import { getPhotos } from './setup.js';
+import './modal-open.js';
 
-const render = getPhotos(PHOTOS_NUMBER);
-renderPhotos(render);
+const photos = getPhotos(PHOTOS_NUMBER);
+renderPhotos(photos);
