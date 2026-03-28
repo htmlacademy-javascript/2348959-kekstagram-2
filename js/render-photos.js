@@ -1,10 +1,11 @@
-const onePhotoTemplate = document.querySelector('#picture').content.querySelector('.picture');
-const picturesContainer = document.querySelector('.pictures');
+import { picturesContainer } from './big-picture/init-modal.js';
 
-export const renderPhotos = (getPhotos) => {
+const onePhotoTemplate = document.querySelector('#picture').content.querySelector('.picture');
+
+export const renderPhotos = (photos) => {
   const compiledPhotoCards = document.createDocumentFragment();
 
-  getPhotos.forEach((photo) => {
+  photos.forEach((photo) => {
     const onePhoto = onePhotoTemplate.cloneNode(true);
     const cardImg = onePhoto.querySelector('.picture__img');
     const cardLikes = onePhoto.querySelector('.picture__likes');
@@ -14,6 +15,8 @@ export const renderPhotos = (getPhotos) => {
     cardImg.alt = photo.description;
     cardComments.textContent = photo.comments.length;
     cardLikes.textContent = photo.likes;
+
+    onePhoto.dataset.id = photo.id;
 
     compiledPhotoCards.append(onePhoto);
   });
