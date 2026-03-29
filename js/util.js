@@ -33,3 +33,6 @@ export const getElementArray = (anyArray) => {
     return arrayObjects[randomIndex];
   };
 };
+
+// проверка нажатия Escape
+export const isEscape = (evt) => evt.key === 'Escape';
