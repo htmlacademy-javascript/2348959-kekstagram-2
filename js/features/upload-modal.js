@@ -1,6 +1,8 @@
 // модалка загрузки фото (#upload-file, .img-upload__overlay)
 
 import { createModalController } from '../widgets/modal-controller.js';
+import { resetScale } from './upload-effects.js';
+import { resetEffects } from './upload-filters.js';
 
 const imgUpload = document.querySelector('.img-upload__overlay');
 const fileInput = document.querySelector('#upload-file');
@@ -14,6 +16,8 @@ const uploadModal = createModalController({
 
 // обёртка для открытия модалки
 const openUploadModal = () => {
+  resetScale();
+  resetEffects();
   uploadModal.open();
 };
 
