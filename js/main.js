@@ -1,10 +1,8 @@
-import { getPhotos } from './core/photos-generator.js';
-import { renderPhotos } from './features/gallery-render.js';
-import { initGalleryModal } from './features/gallery-init.js';
+import { getPhotos } from './setup.js';
+import { renderPhotos } from './render-photos.js';
+import { PHOTOS_NUMBER } from './data.js';
+import { initModal } from './big-picture/init-modal.js';
 
-import './features/upload-modal.js';
-import './form/form.js';
-
-const photos = getPhotos();
+const photos = getPhotos(PHOTOS_NUMBER);
 renderPhotos(photos);
-initGalleryModal(photos);
+initModal (photos);
