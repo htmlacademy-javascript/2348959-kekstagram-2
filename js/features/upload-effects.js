@@ -56,7 +56,6 @@ const onEffectChange = ({ target }) => {
 
   showSlider();
 
-  const { slider } = EFFECT_SETTINGS[currentEffect];
   effectLevelSlider.noUiSlider.updateOptions(slider);
   applyEffect();
 };
