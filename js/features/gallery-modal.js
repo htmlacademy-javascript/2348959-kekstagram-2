@@ -1,8 +1,6 @@
-// модалка большой фотки, комментарии, "Загрузить ещё"
-
 import { createModalController } from '../widgets/modal-controller.js';
 
-const STEP_COMMENTS = 5; // шаг "дозагрузки" комментариев
+const STEP_COMMENTS = 5;
 
 const modalPicture = document.querySelector('.big-picture');
 const closeButton = modalPicture.querySelector('#picture-cancel');
@@ -15,16 +13,14 @@ const socialComments = modalPicture.querySelector('.social__comments');
 const socialCommentTemplate = socialComments.querySelector('.social__comment');
 const commentsLoader = modalPicture.querySelector('.comments-loader');
 
-let currentComments = []; // комментарии конкретной открытой фотографии фото.comments
-let shownComments = 0; // количество отрисованных комментариев в точке 0
+let currentComments = [];
+let shownComments = 0;
 
-// создание контроллера модалки (открытие, закрытие, Esc, блок сркролла)
 const pictureModal = createModalController({
   modalElement: modalPicture,
   closeButton,
 });
 
-// отрисовка данных выбранной фотографии в модалке
 const renderPhoto = (picture) => {
   fullPicture.src = picture.url;
   captionPicture.textContent = picture.description;
@@ -32,12 +28,10 @@ const renderPhoto = (picture) => {
   commentsTotalCount.textContent = picture.comments.length;
 };
 
-// отрисовка кнопки "Загрузить ещё"
 const renderLoader = () => {
   commentsLoader.classList.toggle('hidden', shownComments >= currentComments.length);
 };
 
-// отрисовка порции из 5 комментариев
 const renderCommentsPortion = () => {
   const nextCount = shownComments + STEP_COMMENTS;
   const portionFragment = document.createDocumentFragment();
@@ -62,7 +56,6 @@ const renderCommentsPortion = () => {
   renderLoader();
 };
 
-// отрисовка массива комментариев для модалки
 const renderComments = (comments) => {
   socialComments.innerHTML = '';
   currentComments = [...comments];
@@ -71,14 +64,12 @@ const renderComments = (comments) => {
   renderCommentsPortion();
 };
 
-// обработчик клика кнопки "Загрузить ещё"
 const onLoaderClick = () => {
   renderCommentsPortion();
 };
 
 commentsLoader.addEventListener('click', onLoaderClick);
 
-// открытие МОДАЛКИ + отрисовка ФОТО + отрисовка КОММЕНТОВ
 export const openGalleryModal = (photo) => {
   renderPhoto(photo);
   renderComments(photo.comments);

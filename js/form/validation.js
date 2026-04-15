@@ -1,5 +1,6 @@
 import {
   HASTAG_FORMULA,
+  MAX_COUNT_HASHTAGS,
   MAX_DESCRIPTION
 } from '../core/data.js';
 
@@ -30,7 +31,7 @@ const checkHashtagsLength = (value) => {
     return true;
   }
   const hashtags = getHashtags(value);
-  return hashtags.length <= 5;
+  return hashtags.length <= MAX_COUNT_HASHTAGS;
 };
 
 const checkHashtagsUnique = (value) => {
@@ -66,3 +67,6 @@ validation.addValidator(
 );
 
 export const isValid = () => validation.validate();
+export const resetValidation = () => {
+  validation.reset();
+};

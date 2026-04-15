@@ -1,5 +1,3 @@
-// отрисовка превьюшек в .pictures
-
 import { picturesContainer } from './gallery-init.js';
 
 const onePhotoTemplate = document
