@@ -30,4 +30,4 @@ export const getElementArray = (anyArray) => {
   };
 };
 
-export const isEscape = (evt) => evt.key === 'Escape';
+export const isEscape = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
