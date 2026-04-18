@@ -25,7 +25,7 @@ export function resetFormState () {
   resetScale();
   resetEffects();
   resetValidation();
-};
+}
 
 closeButton.addEventListener('click', () => {
   closeUploadModal();
@@ -44,6 +44,7 @@ const onFormSubmit = async (evt) => {
     closeUploadModal();
     showMessage(Messages.SUCCESS);
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
     showMessage(Messages.ERROR);
   } finally {

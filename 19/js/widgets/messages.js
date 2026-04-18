@@ -24,6 +24,7 @@ const renderMessageFromTemplate = (templateId) => {
 export const showDataError = () => {
   const messageElement = renderMessageFromTemplate('data-error');
   if (!messageElement) {
+    // eslint-disable-next-line no-console
     console.error('Шаблон #data-error не найден в разметке');
     return;
   }

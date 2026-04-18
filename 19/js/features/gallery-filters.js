@@ -28,7 +28,6 @@ const filterPhotos = {
 form.addEventListener('click', ({ target }) => {
   const button = target.closest('.img-filters__button');
   if (button) {
-    console.log(button.id);
     setActiveButton(button);
     const sortedPhotos = filterPhotos[button.id]();
     debouncedRender(sortedPhotos);

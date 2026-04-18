@@ -19,6 +19,7 @@ const initApp = async () => {
     initGalleryModal(photos);
   } catch (err) {
     showDataError();
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 };
