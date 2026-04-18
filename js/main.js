@@ -1,11 +1,23 @@
-import { getPhotos } from './core/photos-generator.js';
+import { getPhotos } from './core/api.js';
 import { renderPhotos } from './features/gallery-render.js';
+import { showDataError } from './widgets/messages.js';
 import { initGalleryModal } from './features/gallery-init.js';
 
-import './features/upload-modal.js';
 import './form/form.js';
+import './form/form-submit.js';
+import './features/upload-modal.js';
 import './features/upload-scale.js';
+import './features/upload-effects.js';
 
-const photos = getPhotos();
-renderPhotos(photos);
-initGalleryModal(photos);
+const initApp = async () => {
+  try {
+    const photos = await getPhotos();
+    renderPhotos(photos);
+    initGalleryModal(photos);
+  } catch (err) {
+    showDataError();
+    console.error(err);
+  }
+};
+
+initApp();

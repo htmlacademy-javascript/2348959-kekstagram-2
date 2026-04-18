@@ -5,8 +5,8 @@ import {
 } from '../core/data.js';
 
 const form = document.querySelector('.img-upload__form');
-const hashtagInput = form.querySelector('.text__hashtags');
 const description = form.querySelector('.text__description');
+const hashtagInput = form.querySelector('.text__hashtags');
 
 const validation = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -15,29 +15,22 @@ const validation = new Pristine(form, {
 });
 
 const getHashtags = (value) => value.toLowerCase().split(' ').filter((item) => item.length);
-
 const checkDescription = (value) => value.length <= MAX_DESCRIPTION;
 
 const checkHashtags = (value) => {
-  if(!value.trim().length) {
-    return true;
-  }
+  if(!value.trim().length) return true;
   const hashtags = getHashtags(value);
   return hashtags.every((item) => HASTAG_FORMULA.test(item));
 };
 
 const checkHashtagsLength = (value) => {
-  if(!value.trim().length) {
-    return true;
-  }
+  if(!value.trim().length) return true;
   const hashtags = getHashtags(value);
   return hashtags.length <= MAX_COUNT_HASHTAGS;
 };
 
 const checkHashtagsUnique = (value) => {
-  if (!value.trim().length) {
-    return true;
-  }
+  if (!value.trim().length) return true;
   const hashtags = getHashtags(value);
   return hashtags.every((hashtag, index, array) => array.indexOf(hashtag) === index);
 };
@@ -51,7 +44,7 @@ validation.addValidator(
 validation.addValidator(
   hashtagInput,
   checkHashtagsLength,
-  'АСТАНАВИТИСЬ, пяти достаточно'
+  'СТОПЭ! лимит 5 хештегов'
 );
 
 validation.addValidator(
