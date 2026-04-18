@@ -43,12 +43,8 @@ export const resetEffects = () => {
 
 const onEffectChange = ({ target }) => {
 
-  if (!target.classList.contains('effects__radio')) {
-    return;
-  }
-
+  if (!target.classList.contains('effects__radio')) return;
   currentEffect = target.value;
-
   if (currentEffect === DEFAULT_EFFECTS) {
     resetEffects();
     return;
