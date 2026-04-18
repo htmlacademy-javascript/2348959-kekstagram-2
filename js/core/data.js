@@ -1,7 +1,7 @@
 export const Messages = {
   SUCCESS: 'success',
   ERROR: 'error'
-}
+};
 
 export const FILTERS = {
   DEFAULT: 'filter-default',
