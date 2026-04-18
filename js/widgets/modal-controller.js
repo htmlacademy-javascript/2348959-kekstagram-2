@@ -24,21 +24,15 @@ export const createModalController = ({
     modalElement.classList.remove(hiddenClass);
 
     escHandler = (evt) => {
-      if (!isEscape(evt)) {
-        return;
-      }
-      if (modalElement.classList.contains(hiddenClass)) {
-        return;
-      }
+      if (!isEscape(evt)) return;
+      if (modalElement.classList.contains(hiddenClass)) return;
       close();
     };
 
     document.addEventListener('keydown', escHandler);
   };
 
-  if (closeButton) {
-    closeButton.addEventListener('click', close);
-  }
+  if (closeButton) {closeButton.addEventListener('click', close)}
 
   return { open, close };
 };
