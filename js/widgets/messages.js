@@ -4,49 +4,31 @@ let isModalMessageOpen = false;
 
 const renderMessageFromTemplate = (templateId) => {
   const template = document.querySelector(`#${templateId}`);
-
-  if (!template) {
-    return null;
-  }
-
-  const messageFragment = template.textContent.cloneNode(true);
+  if (!template) {return null};
+  const messageFragment = template.content.cloneNode(true);
   const element = messageFragment.firstElementChild;
-
   document.body.append(element);
-
   return element;
 };
 
 export const showDataError = () => {
   const messageElement = renderMessageFromTemplate('data-error');
-
   if (!messageElement) {
-    alert ('Не удалось загрузить данные');
+    console.error('Шаблон #data-error не найден в разметке');
     return;
   }
-
-  setTimeout(() => {
-    messageElement.remove();
-  }, 5000);
+  setTimeout(() => messageElement.remove(), 5000);
 };
 
-сonst setClosableMessageHandlers = (messageElement, buttonSelector) => {
+const setClosableMessageHandlers = (messageElement, buttonSelector) => {
   const button = messageElement.querySelector(buttonSelector);
-
   isModalMessageOpen = true;
-
   const onButtonClick = () => close();
-
   const onDocumentClick = (evt) => {
-    if (!messageElement.contains(evt.target)) {
-      close();
-    }
+    if (!messageElement.contains(evt.target)) {close()}
   };
-
   const onDocumentKeydown = (evt) => {
-    if (isEscape(evt)) {
-      close();
-    }
+    if (isEscape(evt)) {close()}
   };
 
   function close() {
@@ -56,7 +38,6 @@ export const showDataError = () => {
     if (button) {
       button.removeEventListener('click', onButtonClick);
     }
-
     isModalMessageOpen = false;
   }
 
@@ -67,28 +48,16 @@ export const showDataError = () => {
   document.addEventListener('keydown', onDocumentKeydown);
 };
 
-export const showSuccesMessage = () => {
-  if (isModalMessageOpen) {
-    return;
-  }
-
+export const showSuccessMessage = () => {
+  if (isModalMessageOpen) return;
   const messageElement = renderMessageFromTemplate('success');
-  if (!messageElement) {
-    return;
-  }
-
-  setClosableMessageHandlers(messageElement, '.success_button');
+  if (!messageElement) return;
+  setClosableMessageHandlers(messageElement, '.success__button');
 };
 
 export const showErrorMessage = () => {
-  if (isModalMessageOpen) {
-    return;
-  }
-
-  const messageElement =renderMessageFromTemplate('error');
-  if (!messageElement) {
-    return;
-  }
-
+  if (isModalMessageOpen) return;
+  const messageElement = renderMessageFromTemplate('error');
+  if (!messageElement) return;
   setClosableMessageHandlers(messageElement, '.error__button');
 };
