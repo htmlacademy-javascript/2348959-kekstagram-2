@@ -115,3 +115,8 @@ export const EFFECT_SETTINGS = {
     apply: (value) => `brightness(${value})`,
   },
 };
+
+export const imgFilters = document.querySelector('.img-filters');
+export const showFilters = () => {
+  imgFilters.classList.remove('img-filters--inactive');
+};
