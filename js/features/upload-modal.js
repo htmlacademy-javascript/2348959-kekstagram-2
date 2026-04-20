@@ -10,6 +10,8 @@ const effectPreview = document.querySelectorAll('.effects__preview');
 const inputDescription = document.querySelector('.text__description');
 const inputHashtag = document.querySelector('.text__hashtags');
 
+const defaultPreviewSrc = imgPreview.src;
+
 const canClose = () => document.activeElement !== inputHashtag
   && document.activeElement !== inputDescription
   && !document.querySelector(`.${Messages.ERROR}`);
@@ -18,7 +20,15 @@ const uploadModal = createModalController({
   modalElement: imgUpload,
   closeButton,
   canClose,
-  closeModal: resetFormState
+  // closeModal: resetFormState
+  closeModal: () => {
+    resetFormState();
+    fileInput.value = '';
+    imgPreview.src = defaultPreviewSrc;
+    effectPreview.forEach((preview) => {
+      preview.style.backgroundImage = '';
+    });
+  }
 });
 
 const openUploadModal = uploadModal.open;

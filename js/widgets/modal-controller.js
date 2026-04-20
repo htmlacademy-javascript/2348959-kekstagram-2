@@ -7,12 +7,15 @@ export const createModalController = ({
   openClass = 'modal-open',
   hiddenClass = 'hidden',
   canClose = null,
-  closeModal = null
+  closeModal = null,
+  closeButton = null
 }) => {
   let escHandler = null;
 
   const close = () => {
-    body.classList.remove(openClass);
+    if (openClass) {
+      body.classList.remove(openClass);
+    }
     modalElement.classList.add(hiddenClass);
     if (closeModal) {
       closeModal();
@@ -24,7 +27,9 @@ export const createModalController = ({
   };
 
   const open = () => {
-    body.classList.add(openClass);
+    if (openClass) {
+      body.classList.add(openClass);
+    }
     modalElement.classList.remove(hiddenClass);
 
     escHandler = (evt) => {
@@ -42,6 +47,15 @@ export const createModalController = ({
 
     document.addEventListener('keydown', escHandler);
   };
+
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      if (canClose && !canClose()) {
+        return;
+      }
+      close();
+    });
+  }
 
   return { open, close };
 };

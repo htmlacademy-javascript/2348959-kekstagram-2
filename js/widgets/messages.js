@@ -34,12 +34,15 @@ export const showDataError = () => {
 export const showMessage = (type) => {
   const message = templates[type].cloneNode(true);
 
+  body.append(message);
+
   const actionsMessage = createModalController({
     modalElement: message,
+    openClass: '',
     closeModal: () => message.remove()
   });
   actionsMessage.open();
-  body.append(message);
+  // body.append(message);
   message.addEventListener('click', ({ target }) => {
     if (target.classList.contains(type) || target.classList.contains(`${type}__button`)) {
       actionsMessage.close();
