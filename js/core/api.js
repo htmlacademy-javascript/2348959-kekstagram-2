@@ -28,6 +28,7 @@ export const getPhotos = () => request(
   Route.GET_PHOTOS,
   Method.GET
 );
+
 export const sendForm = (formData) => request(
   Route.SEND_FORM,
   Method.POST,

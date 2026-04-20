@@ -20,7 +20,6 @@ const uploadModal = createModalController({
   modalElement: imgUpload,
   closeButton,
   canClose,
-  // closeModal: resetFormState
   closeModal: () => {
     resetFormState();
     fileInput.value = '';

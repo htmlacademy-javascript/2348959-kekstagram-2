@@ -8,7 +8,6 @@ const imgUploadScale = document.querySelector('.img-upload__scale');
 const scaleSmaller = imgUploadScale.querySelector('.scale__control--smaller');
 const scaleBigger = imgUploadScale.querySelector('.scale__control--bigger');
 const scaleValue = imgUploadScale.querySelector('.scale__control--value');
-
 const previewImage = document.querySelector('.img-upload__preview img');
 
 let currentScale = SCALE_MAX;

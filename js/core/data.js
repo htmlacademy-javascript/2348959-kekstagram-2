@@ -9,6 +9,10 @@ export const FILTERS = {
   DISCUSSED: 'filter-discussed'
 };
 
+export const TIMEOUT_FIVESEC = 5000;
+export const DEBOUNCE_DELAY = 500;
+export const RANDOM_LIMIT = 10;
+
 export const MIN_COMMENTS = 0;
 export const MAX_COMMENTS = 30;
 export const MIN_LIKES = 15;
@@ -97,6 +101,3 @@ export const EFFECT_SETTINGS = {
     apply: (value) => `brightness(${value})`,
   },
 };
-
-export const TIMEOUT_FIVESEC = 5000;
-export const DEBOUNCE_DELAY = 500;

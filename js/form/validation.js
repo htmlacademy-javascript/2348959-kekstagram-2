@@ -15,6 +15,7 @@ const validation = new Pristine(form, {
 });
 
 const getHashtags = (value) => value.toLowerCase().split(' ').filter((item) => item.length);
+
 const checkDescription = (value) => value.length <= MAX_DESCRIPTION;
 
 const checkHashtags = (value) => {
@@ -50,7 +51,7 @@ validation.addValidator(
 validation.addValidator(
   hashtagInput,
   checkHashtagsLength,
-  'СТОПЭ! лимит 5 хештегов'
+  `СТОПЭ! лимит ${MAX_COUNT_HASHTAGS} хештегов`
 );
 
 validation.addValidator(

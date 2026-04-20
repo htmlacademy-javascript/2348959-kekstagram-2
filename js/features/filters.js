@@ -1,4 +1,4 @@
-import { FILTERS } from '../core/data.js';
+import { FILTERS, RANDOM_LIMIT } from '../core/data.js';
 import { debounce } from '../core/util.js';
 import { renderPhotos } from './gallery-render.js';
 
@@ -22,7 +22,7 @@ const setActiveButton = (button) => {
 const filterPhotos = {
   [FILTERS.DEFAULT]: () => localPhotos,
   [FILTERS.DISCUSSED]: () => [...localPhotos].sort((a, b) => b.comments.length - a.comments.length),
-  [FILTERS.RANDOM]: () => [...localPhotos].sort(() => Math.random() - 0.5).slice(0, 10)
+  [FILTERS.RANDOM]: () => [...localPhotos].sort(() => Math.random() - 0.5).slice(0, RANDOM_LIMIT)
 };
 
 form.addEventListener('click', ({ target }) => {

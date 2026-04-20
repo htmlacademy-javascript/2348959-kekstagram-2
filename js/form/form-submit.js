@@ -8,7 +8,6 @@ import { isValid, resetValidation } from './validation.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const submitButton = uploadForm.querySelector('.img-upload__submit');
-// const closeButton = document.querySelector('.img-upload__cancel');
 
 const SubmitButtonText = {
   IDLE: 'Опубликовать',
@@ -27,10 +26,6 @@ export function resetFormState () {
   resetValidation();
 }
 
-// closeButton.addEventListener('click', () => {
-//   closeUploadModal();
-// });
-
 const onFormSubmit = async (evt) => {
   evt.preventDefault();
   if (!isValid()) {
@@ -44,8 +39,6 @@ const onFormSubmit = async (evt) => {
     closeUploadModal();
     showMessage(Messages.SUCCESS);
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error(err);
     showMessage(Messages.ERROR);
   } finally {
     setSubmitButtonState(false);
