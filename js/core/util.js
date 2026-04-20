@@ -1,6 +1,8 @@
+import { DEBOUNCE_DELAY } from './data.js';
+
 export const isEscape = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
-export const debounce = (callback, delay = 500) => {
+export const debounce = (callback, delay = DEBOUNCE_DELAY) => {
   let timeoutId;
   return (...argumentsArray) => {
     clearTimeout(timeoutId);

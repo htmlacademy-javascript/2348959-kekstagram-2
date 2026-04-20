@@ -8,16 +8,15 @@ import { isValid, resetValidation } from './validation.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const submitButton = uploadForm.querySelector('.img-upload__submit');
-const closeButton = document.querySelector('.img-upload__cancel');
 
 const SubmitButtonText = {
   IDLE: 'Опубликовать',
   SENDING: 'Публикую...',
 };
 
-const setSubmitButtonState = (isDisable) => {
-  submitButton.disable = isDisable;
-  submitButton.textContent = isDisable ? SubmitButtonText.SENDING : SubmitButtonText.IDLE;
+const setSubmitButtonState = (isDisabled) => {
+  submitButton.disabled = isDisabled;
+  submitButton.textContent = isDisabled ? SubmitButtonText.SENDING : SubmitButtonText.IDLE;
 };
 
 export function resetFormState () {
@@ -26,10 +25,6 @@ export function resetFormState () {
   resetEffects();
   resetValidation();
 }
-
-closeButton.addEventListener('click', () => {
-  closeUploadModal();
-});
 
 const onFormSubmit = async (evt) => {
   evt.preventDefault();
@@ -44,8 +39,6 @@ const onFormSubmit = async (evt) => {
     closeUploadModal();
     showMessage(Messages.SUCCESS);
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error(err);
     showMessage(Messages.ERROR);
   } finally {
     setSubmitButtonState(false);

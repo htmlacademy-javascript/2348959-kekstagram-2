@@ -24,8 +24,6 @@ const renderMessageFromTemplate = (templateId) => {
 export const showDataError = () => {
   const messageElement = renderMessageFromTemplate('data-error');
   if (!messageElement) {
-    // eslint-disable-next-line no-console
-    console.error('Шаблон #data-error не найден в разметке');
     return;
   }
   setTimeout(() => messageElement.remove(), TIMEOUT_FIVESEC);
@@ -34,12 +32,14 @@ export const showDataError = () => {
 export const showMessage = (type) => {
   const message = templates[type].cloneNode(true);
 
+  body.append(message);
+
   const actionsMessage = createModalController({
     modalElement: message,
+    openClass: '',
     closeModal: () => message.remove()
   });
   actionsMessage.open();
-  body.append(message);
   message.addEventListener('click', ({ target }) => {
     if (target.classList.contains(type) || target.classList.contains(`${type}__button`)) {
       actionsMessage.close();
