@@ -99,3 +99,4 @@ export const EFFECT_SETTINGS = {
 };
 
 export const TIMEOUT_FIVESEC = 5000;
+export const DEBOUNCE_DELAY = 500;
