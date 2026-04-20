@@ -8,7 +8,7 @@ import './form/form-submit.js';
 import './features/upload-modal.js';
 import './features/upload-scale.js';
 import './features/upload-effects.js';
-import { initFilters } from './features/gallery-filters.js';
+import { initFilters } from './features/filters.js';
 
 
 const initApp = async () => {
