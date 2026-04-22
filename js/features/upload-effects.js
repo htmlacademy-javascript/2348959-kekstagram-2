@@ -96,13 +96,10 @@ const applyEffect = () => {
 
 effectLevelSliderElement.noUiSlider.on('update', applyEffect);
 
-// const showSlider = (isVisible = true) => {
-//   sliderFieldsetElement.classList.toggle('hidden', !isVisible);
-// };
-
 export const resetEffects = () => {
   currentEffect = DEFAULT_EFFECTS;
-  sliderFieldsetElement.classList.toggle('hidden', true);
+  const isVisible = false;
+  sliderFieldsetElement.classList.toggle('hidden', !isVisible);
   applyEffect();
 };
 
@@ -117,7 +114,8 @@ const onEffectChange = ({ target }) => {
     return;
   }
 
-  sliderFieldsetElement.classList.toggle('hidden', false);
+  const isVisible = true;
+  sliderFieldsetElement.classList.toggle('hidden', !isVisible);
 
   effectLevelSliderElement.noUiSlider.updateOptions(EFFECT_SETTINGS[currentEffect].slider);
   applyEffect();
