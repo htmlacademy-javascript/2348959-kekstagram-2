@@ -1,5 +1,5 @@
 const DEFAULT_EFFECTS = 'none';
-export const EFFECT_SETTINGS = {
+const EFFECT_SETTINGS = {
   none: {
     slider: {
       range: {
@@ -96,13 +96,13 @@ const applyEffect = () => {
 
 effectLevelSliderElement.noUiSlider.on('update', applyEffect);
 
-// const showSlider = (isVisible = true) => {
-//   sliderFieldsetElement.classList.toggle('hidden', !isVisible);
-// };
+const toggleSlider = () => {
+  sliderFieldsetElement.classList.toggle('hidden', currentEffect === DEFAULT_EFFECTS);
+};
 
 export const resetEffects = () => {
   currentEffect = DEFAULT_EFFECTS;
-  sliderFieldsetElement.classList.toggle('hidden', true);
+  toggleSlider();
   applyEffect();
 };
 
@@ -117,7 +117,7 @@ const onEffectChange = ({ target }) => {
     return;
   }
 
-  sliderFieldsetElement.classList.toggle('hidden', false);
+  toggleSlider();
 
   effectLevelSliderElement.noUiSlider.updateOptions(EFFECT_SETTINGS[currentEffect].slider);
   applyEffect();
